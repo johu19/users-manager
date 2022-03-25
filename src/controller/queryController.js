@@ -1,11 +1,11 @@
 const queryService = require('../service/queryService')
 
-async function getRestaurants(req, res) {
+async function searchRecipes(req, res) {
     const { user } = req
-    const { city } = req.body
-    const foundRestaurants = await queryService.getRestaurantsAndRegisterQuery(user.email, city)
+    const { recipeName } = req.body
+    const foundRecipes = await queryService.getRecipesAndRegisterQuery(user.email, recipeName)
 
-    res.status(200).json(foundRestaurants)
+    res.status(200).json(foundRecipes)
 }
 
 async function getQueries(req, res) {
@@ -16,6 +16,6 @@ async function getQueries(req, res) {
 }
 
 module.exports = {
-    getRestaurants,
+    searchRecipes,
     getQueries
 }

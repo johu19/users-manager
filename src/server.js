@@ -16,7 +16,7 @@ app.post('/register', userController.registerUser)
 app.post('/login', userController.login)
 app.put('/logout', authenticateToken, userController.logout)
 
-app.put('/query', authenticateToken, queryController.getRestaurants)
+app.put('/query', authenticateToken, queryController.searchRecipes)
 app.get('/query', queryController.getQueries)
 
  

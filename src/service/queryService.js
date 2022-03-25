@@ -1,17 +1,18 @@
 const queryRepository = require('../repository/queryRepository')
+const spoonacularGateway = require('../gateway/spoonacularGateway')
 
 async function getQueries(userEmail) {
     return queryRepository.getQueries(userEmail);
 }
 
-async function getRestaurantsAndRegisterQuery(userEmail, city) {
-    const foundRestaurants = ['Apollo', 'PizzaR']
-    const query = { userEmail, city, foundRestaurants }
+async function getRecipesAndRegisterQuery(userEmail, recipeName) {
+    const foundRecipes = spoonacularGateway.getRecipes(recipeName)
+    const query = { userEmail, recipeName, foundRecipes }
     queryRepository.registerQuery(query)
-    return foundRestaurants
+    return foundRecipes
 }
 
 module.exports = {
     getQueries,
-    getRestaurantsAndRegisterQuery
+    getRecipesAndRegisterQuery
 }
