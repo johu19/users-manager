@@ -8,8 +8,12 @@ async function registerUser(req, res) {
 
 async function login(req, res) {
     const { email, password } = req.body
-    const accessToken = await userService.login(email, password);
-    res.status(200).json({ accessToken }).send()
+    try {
+        const accessToken = await userService.login(email, password);
+        res.status(200).json({ accessToken }).send()   
+    } catch (error) {
+        res.status(400).json({ error }).send()
+    }
 }
 
 async function logout(req, res) {
