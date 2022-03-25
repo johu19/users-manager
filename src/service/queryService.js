@@ -6,7 +6,7 @@ async function getQueries(userEmail) {
 }
 
 async function getRecipesAndRegisterQuery(userEmail, recipeName) {
-    const foundRecipes = spoonacularGateway.getRecipes(recipeName)
+    const foundRecipes = await spoonacularGateway.getRecipes(recipeName)
     const query = { userEmail, recipeName, foundRecipes }
     queryRepository.registerQuery(query)
     return foundRecipes
